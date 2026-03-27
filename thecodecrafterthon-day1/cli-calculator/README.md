@@ -161,7 +161,7 @@ Enter Y to continue. Enter N to quit
 
 ## 👨‍💻 Author
 
-Your Name
+Chibueze Maxwell
 
 ---
 

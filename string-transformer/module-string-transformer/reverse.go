@@ -5,20 +5,34 @@
 
 package modulestringtransformer
 
-import(
-	strings
+import (
+	"strings"
 )
 
-func Reversed(text string) string {
-	
-	if strings.HasPrefix(text, "reverse") {
+func Reverse(text string) string {
+	text = strings.ToLower(text)
+
+	if strings.HasPrefix(text, "reverse") && strings.ToLower(text) == "reverse" {
 		strings.TrimPrefix(text, "reverse")
 	}
 
-	for _, v := range v {
-		
+	runes := []rune(text)
+
+	for i, j := 0, len(runes)-1; i < j; i, j = i+1, j-1 {
+		runes[i], runes[j] = runes[j], runes[i]
 	}
-	for j := 0;len(text) - 1; j-- {
-		
+
+	return string(runes)
+}
+
+func ReversedText(input string) string {
+	words := strings.Fields(input)
+
+	reversedWords := []string{}
+
+	for _, word := range words {
+		reversedWords = append(reversedWords, Reverse(word))
 	}
+
+	return strings.Join(reversedWords, " ")
 }

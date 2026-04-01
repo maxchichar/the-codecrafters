@@ -1,8 +1,7 @@
 // ummulkusum musa
-package main
+package processor
 
 import (
-	"fmt"
 	"strconv"
 	"strings"
 )
@@ -22,9 +21,4 @@ func BinToDec(bin string) string {
 		}
 	}
 	return strings.Join(s, " ")
-}
-
-func main() {
-	fmt.Println(BinToDec("101010 (bin) mr abraham the senior dev, and our able code legend"))
-	fmt.Println(BinToDec("10 (bin)"))
 }

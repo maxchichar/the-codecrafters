@@ -1,5 +1,5 @@
-// Blessing Anebi
-// Emmanuel Inogwu
+// Blessing Anebi & Emmanuel Inogwu
+
 package processor
 
 import (

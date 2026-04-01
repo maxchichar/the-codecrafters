@@ -1,6 +1,6 @@
 // Chibueze Maxwell
 
-package main
+package processor
 
 import(
 	"strings"

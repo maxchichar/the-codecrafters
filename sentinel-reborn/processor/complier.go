@@ -10,5 +10,5 @@ func Complier(text string) string {
 	text = FixArticles(text)
 	text = FixPunct(text)
 
-	return fixQuote(text)
+	return FixQuote(text)
 }

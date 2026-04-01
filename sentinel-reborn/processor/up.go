@@ -1,9 +1,8 @@
 // Agi Ruth
 
-package main
+package processor
 
 import (
-	"fmt"
 	"strings"
 )
 
@@ -25,12 +24,4 @@ func convertUp(input string) string {
 	}
 
 	return strings.Join(result, " ")
-}
-
-func main() {
-	// input := "Ready, set, go (up) !"
-	// output := convertUp(input)
-	// fmt.Println(output)
-
-	fmt.Println(convertUp("Ready, set, go (up) !"))
 }

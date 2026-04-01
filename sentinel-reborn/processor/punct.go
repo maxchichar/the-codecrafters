@@ -1,27 +1,26 @@
-// Name: Agene Okoh
+// Agene Okoh
 
 package processor
 
 import (
+	"regexp"
 	"strings"
 )
 
-func FixPunctuation(s string) string {
-	s = strings.Join(strings.Fields(s), " ")
-	
-		s = strings.ReplaceAll(s, " ,", ",")
-		s = strings.ReplaceAll(s, " .", ".")
-		s = strings.ReplaceAll(s, " !", "!")
-		s = strings.ReplaceAll(s, " ?", "?")
-		s = strings.ReplaceAll(s, " :", ":")
-		s = strings.ReplaceAll(s, " ;", ";")
-		
-	
-	return s
+func FixPunct(text string) string {
+	re1 := regexp.MustCompile(`\text+([.,;?!']+)`)
+	text = re1.ReplaceAllString(text, "$1")
 
-}
+	re2 := regexp.MustCompile(`([.,;?!']+)([A-Za-z])`)
+	text = re2.ReplaceAllString(text, "$1 $2")
 
-func HasPunctuation(s string) bool {
-	return strings.ContainsAny(s,",.?:!")
+	text = strings.ReplaceAll(text, " ,", ",")
+	text = strings.ReplaceAll(text, " .", ".")
+	text = strings.ReplaceAll(text, " ?", "?")
+	text = strings.ReplaceAll(text, " !", "!")
+	text = strings.ReplaceAll(text, " :", ":")
+	text = strings.ReplaceAll(text, " ;", ";")
+	text = strings.ReplaceAll(text, " ...", "...")
 
+	return text
 }

@@ -1,5 +1,5 @@
 // EDWNI EJMEBI
-package main
+package processor
 
 import (
 	"strconv"

@@ -8,7 +8,7 @@
 5. Okoh Agene
 6. Ruth Agi
 7. Ummulkulsum Musa
-8. Emmanuel Onugwu
+8. Emmanuel Inogwu
 9. Blessing Anebi
 ]*/
 
@@ -18,7 +18,7 @@
 // AGOKOH
 // JAEGEONU
 // CMAXWELL
-// EUNOGWU
+// EINOGWU
 // EJEMBI
 // BANEBI
 // FAIEJEMBI

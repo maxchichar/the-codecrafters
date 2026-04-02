@@ -94,6 +94,7 @@ func main()  {
 		default:
 			fmt.Println("Error: Input invalid")
 		}
+		
 	}
 
 }

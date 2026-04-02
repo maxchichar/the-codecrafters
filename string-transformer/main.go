@@ -17,7 +17,6 @@ import (
 
 func ToCapital(text string) string {
 	s := strings.ToLower(text) //converts the text to lowercase
-	strings.Fields(text)
 	// As the name implies prefix: it checks for the prefix before execution
 	if strings.HasPrefix(s, "cap") {
 		s = strings.TrimPrefix(s, "cap")
@@ -51,8 +50,11 @@ func ToUpper(text string) string {
 func Title(text string) string {
 	text = strings.ToLower(text)
 	words := strings.Fields(text)
-	smallwords := " a an the and but or for nor on at to by in of up as is it "
+	smallwords := " a an the and i my but or for nor on at to by in of up as is it "
 	
+	if len(words) == 0 {
+		return ""
+	}
 	
 	for i, w := range words {
 		if strings.Contains(smallwords, " "+w+" ") {
@@ -63,8 +65,11 @@ func Title(text string) string {
 	}
 	
 	if len(words) > 0 && strings.ToLower(words[0]) == "title" {
-		strings.TrimPrefix(words[0], "title")
 		words = words[1:]
+	}
+
+	if len(words) == 0 {
+		return ""
 	}
 
 	words[0] = strings.Title(words[0])
@@ -89,7 +94,7 @@ func Reverse(text string) string {
 	text = strings.ToLower(text)
 
 	if strings.HasPrefix(text, "reverse") && strings.ToLower(text) == "reverse" {
-		strings.TrimPrefix(text, "reverse")
+		text = strings.TrimPrefix(text, "reverse")
 	}
 
 	runes := []rune(text)
@@ -166,43 +171,60 @@ func main()  {
 	start:
 	fmt.Print("> ")
 	scanner.Scan() 
+	// if !scanner.Scan() {
+	// 	if err := scanner.Err(); err != nil{
+	// 		fmt.Println("Error Reading Input: ", err)
+	// 	}
+	// 	return
+	// }
 	input := scanner.Text()
+	input = strings.TrimSpace(input)
 
-	if input == " " {
-		fmt.Println("Input Invalid: Type 'help' for info.")
+	word := strings.Fields(input)
+
+	if len(word) == 0 {
 		goto start
 	}
 
-	word := strings.Fields(input)
+	command := strings.ToLower(word[0])
+
+	if len(word) == 1 && command != "help" && command != "exit" {
+		fmt.Printf("Error: '%s' requires text input. Type 'help' for examples.\n", command)
+		goto start
+	}
 	
 	
-	switch word[0] {
-	case "help", "Help", "HELP":
+	switch command {
+	case "help":
 		showHelp()
 		goto start
-	case "upper", "UPPER", "Upper":
+	case "upper":
 		fmt.Println(ToUpper(input))
 		goto start
-	case "lower", "Lower", "LOWER":
+	case "lower":
 		fmt.Println(ToLower(input))
 		goto start
-	case "cap", "Cap", "CAP":
+	case "cap":
 		fmt.Println(ToCapital(input))
 		goto start
-	case "title", "Title", "TITLE":
+	case "title":
 		fmt.Println(Title(input))
 		goto start
-	case "snake", "Snake", "SNAKE":
+	case "snake":
 		fmt.Println(snakeCase(input))
 		goto start
-	case "reverse", "Reverse", "REVERSE":
+	case "reverse":
 		fmt.Println(ReversedText(input))
 		goto start
-	case "exit", "Exit", "EXIT":
+	case "exit":
 		fmt.Println("Shutting down String Transformer...")
 		time.Sleep(2 * time.Second)
 		fmt.Println()
-		fmt.Println("Good")
+		fmt.Println("\nGood bye")
+		return
+	default:
+		fmt.Println("Unknown command. Type 'help' to see available commands.")
 	}
+	goto start
 
 }

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"strconv"
 )
-var option int
+var option string
 var userInput string
 
 func Hex(hexStr string) (int64, error) {
@@ -47,14 +47,10 @@ func main()  {
 	for {
 		fmt.Println()
 		fmt.Println("Choose conversion by the number")
-		op1 := 1
-		fmt.Println(op1, ". Hexadecimal to decimal")
-		op2 := 2
-		fmt.Println(op2, ". Binary to decimal")
-		op3 := 3
-		fmt.Println(op3, ". Decimal to hexadecimal and binary")
-		op4 := 4
-		fmt.Println(op4, ". Quit")
+		fmt.Println("1. Hexadecimal to decimal")
+		fmt.Println("2. Binary to decimal")
+		fmt.Println("3. Decimal to hexadecimal and binary")
+		fmt.Println("4. Quit")
 		
 		fmt.Println()
 		
@@ -63,7 +59,7 @@ func main()  {
 		fmt.Println()
 	
 		switch option {
-		case 1:
+		case "1":
 			fmt.Print("Input Hexadecimal: ")
 			fmt.Scanln(&userInput)
 			fmt.Println()
@@ -72,7 +68,7 @@ func main()  {
 			fmt.Print("Decimal: ")
 			fmt.Println(Hex(userInput))
 			continue
-		case 2:
+		case "2":
 			fmt.Print("Input Binary: ")
 			fmt.Scanln(&userInput)
 			fmt.Println()
@@ -81,8 +77,8 @@ func main()  {
 			fmt.Print("Decimal: ")
 			fmt.Println(Bin(userInput))
 			continue
-		case 3:
-			fmt.Println("Input Decimal: ")
+		case "3":
+			fmt.Print("Input Decimal: ")
 			fmt.Scanln(&userInput)
 			fmt.Println()
 
@@ -92,9 +88,11 @@ func main()  {
 			fmt.Print("Hexadecimal: ")
 			fmt.Println(DecToHex(userInput))
 			
-		case 4:
+		case "4", "Quit", "quit":
 			fmt.Println("See You Again")
 			return
+		default:
+			fmt.Println("Error: Input invalid")
 		}
 	}
 

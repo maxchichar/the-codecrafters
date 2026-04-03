@@ -183,47 +183,50 @@ func main()  {
 	word := strings.Fields(input)
 
 	if len(word) == 0 {
+		fmt.Println("✗ No text provided. Usage: 'help' to start")
 		goto start
 	}
 
 	command := strings.ToLower(word[0])
+	
+	if len(word) == 1 && command == "upper" || command == "lower" || command == "cap" || command == "title" || command == "snake" || command == "reverse" {
+		fmt.Printf("Error: '%s' requires text input. Type 'help' for examples.\n", command)
+		goto start
+	}
 
 	if len(word) == 1 && command != "help" && command != "exit" {
-		fmt.Printf("Error: '%s' requires text input. Type 'help' for examples.\n", command)
+		fmt.Printf("Unknown command. Type 'help' to see available commands.\n")
 		goto start
 	}
 	
 	
 	switch command {
-	case "help":
+	case "help", "HELP", "Help":
 		showHelp()
 		goto start
-	case "upper":
+	case "upper", "UPPER", "Upper":
 		fmt.Println(ToUpper(input))
 		goto start
-	case "lower":
+	case "lower", "LOWER", "Lower":
 		fmt.Println(ToLower(input))
 		goto start
-	case "cap":
+	case "cap", "CAP", "Command":
 		fmt.Println(ToCapital(input))
 		goto start
-	case "title":
+	case "title", "TITLE", "Title":
 		fmt.Println(Title(input))
 		goto start
-	case "snake":
+	case "snake", "SNAKE", "Snake":
 		fmt.Println(snakeCase(input))
 		goto start
-	case "reverse":
+	case "reverse", "REVERSE", "Reverse":
 		fmt.Println(ReversedText(input))
 		goto start
-	case "exit":
+	case "exit", "EXIT", "Exit":
 		fmt.Println("Shutting down String Transformer...")
 		time.Sleep(2 * time.Second)
-		fmt.Println()
 		fmt.Println("\nGood bye")
 		return
-	default:
-		fmt.Println("Unknown command. Type 'help' to see available commands.")
 	}
 	goto start
 

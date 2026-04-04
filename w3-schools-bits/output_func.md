@@ -141,12 +141,15 @@ The value of b = 7 and type: int
 Go provides several formatting verbs that can be used with the `Printf()` functions.
 
 ### General Formatting Verbs
->>>>Verb<---------------------->Description
+>Verb<---------------------->Description
 
-* >%v  --->   This prints the value in defualt format
-* >%#v --->   This prints the value in Go-syntax format
-* >%T  --->   This prints the type of the value
-* >%%  --->   This prints the `%` sign
+>`%v`  --->   This prints the value in defualt format
+
+>`%#v` --->   This prints the value in Go-syntax format
+
+>`%T`  --->   This prints the type of the value
+
+>`%%`  --->   This prints the `%` sign
 
 #### Example:
 ```go
@@ -185,29 +188,29 @@ string
 ```
 ### Integer Formatting Verb
 
->Verb----------------------Description
+>Verb<---------------------->Description
 
->%b -----> Base 2
+>`%b` -----> Base 2
 
->%d -----> Base 10
+>`%d` -----> Base 10
 
->%+d -----> Base 10 and always shows sign
+>`%+d` -----> Base 10 and always shows sign
 
->%o -----> Base8
+>`%o` -----> Base8
 
->%O -----> Base 8, leading with 0o
+>`%O` -----> Base 8, leading with 0o
 
->%x -----> Base 16, lowercase
+>`%x` -----> Base 16, lowercase
 
->%X -----> Base 16, uppercase
+>`%X` -----> Base 16, uppercase
 
->%#x -----> Base 16, with leading 0x
+>`%#x` -----> Base 16, with leading 0x
 
->%4d ------> Pad with spaces (width 4, right justified)
+>`%4d` ------> Pad with spaces (width 4, right justified)
 
->%-4d -----> Pad with spaces (width 4, left justified)
+>`%-4d` -----> Pad with spaces (width 4, left justified)
 
->%04d -----> Pad with zero (width 4)
+>`%04d` -----> Pad with zero (width 4)
 
 #### Example:
 ```go
@@ -251,16 +254,123 @@ func main()  {
 ```
 
 ### String Formatting Verbs
->Verb----------------Description
+>Verb<---------------->Description
 
->`%s` Prints the value as plain string
+>`%s` This prints the value as plain string
 
->`%q`	Prints the value as a double-quoted string
+>`%q`	This prints the value as a double-quoted string
 
->`%8s`	Prints the value as plain string (width 8, right justified)
+>`%8s`	This prints the value as plain string (width 8, right justified)
 
->`%-8s`	Prints the value as plain string (width 8, left justified)
+>`%-8s`	This prints the value as plain string (width 8, left justified)
 
->`%x`	Prints the value as hex dump of byte values
+>`%x`	This Prints the value as hex dump of byte values
 
->`%x`Prints the value as hex dump with spaces
+>`% x`   This prints the value as hex dump with spaces
+
+#### Example:
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main()  {
+	var txt = "Output"
+
+	fmt.Printf("%s\n", txt)
+	fmt.Printf("%q\n", txt)
+	fmt.Printf("%8s\n", txt)
+	fmt.Printf("%-8s\n", txt)
+	fmt.Printf("%x\n", txt)
+	fmt.Printf("% x\n", txt)
+}
+```
+
+#### Output:
+```bash
+✗ go run main.go                               
+Output
+"Output"
+  Output
+Output  
+4f7574707574
+4f 75 74 70 75 74
+```
+
+### Boolean Formatting Verbs
+
+>Verb<---------------->Description
+
+>`%t` -----> Same as `%v` but for the boolean that decides either it's true or false
+
+#### Example
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main() {
+	var a bool = true
+	var b = false
+
+	fmt.Printf("%t\n", a)
+	fmt.Printf("%t\n", b)
+}
+```
+
+#### Output:
+```bash
+✗ go run main.go
+true
+false
+```
+
+### Float Formatting Verbs
+
+>Verb<---------------->Description
+
+
+> `%e` -----> Scientific notation with 'e' as exponent
+
+> `%f` -----> Decimal point, no exponent
+
+> `%.2f` -----> Default width, precision 2
+
+> `%6.2f` -----> Width 6, precision 2
+
+> `%g` -----> Exponent as needed, only necessary digits
+
+#### Example:
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main() {
+	var b = 21.7
+
+	fmt.Printf("%e\n", b)
+	fmt.Printf("%f\n", b)
+	fmt.Printf("%.2f\n", b)
+	fmt.Printf("%6.2f\n", b)
+	fmt.Printf("%g\n", b)
+}
+```
+
+#### Output:
+```bash
+✗ go run main.go
+2.170000e+01
+21.700000
+21.70
+ 21.70
+21.7
+```
+
+#### In our next topic open `data_types.md` we are going to be learning about data types we discussed earlier in `variables.md`

@@ -18,6 +18,8 @@ There are different types of variables
 * `string` - stores word e.g "Go Variables" and strings value are declared with double quotes.
 * `bool` - this returns either true or false and stores it values. there are only two values with `bool` true of false.
 
+Your going to learn more about Go variable types in `data_types.md`
+
 ### Creating (Declaring) Variables
 In go there are two ways to declare a variable:
 

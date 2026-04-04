@@ -51,9 +51,9 @@ func main() {
 
 ##### Output:
 ```bash
-> go run main.go
+✗ go run main.go
 
-> Chibueze
+Chibueze
 ```
 This tells use that the var keyword can be declare outside the function and inside.
 
@@ -80,10 +80,10 @@ func main() {
 
 ##### Output:
 ```bash
-> go run main.go
+✗ go run main.go
 
-> 230
-  Learn2earn
+230
+Learn2earn
 ```
 
 #### 2. Using the `:=` Variable
@@ -117,11 +117,231 @@ func main() {
 
 ##### Output:
 ```bash
-> go run main.go
+✗ go run main.go
 
-> Chibueze Charles Maxwell
-  00019
-  100000.07
+Chibueze Charles Maxwell
+00019
+100000.07
+```
+### Declaring Multiple Variables
+In this section you're going to learn by practicing and following examples and personally modifying it while learning.
+
+##### Example:
+```go
+package main
+
+import(
+    "fmt"
+)
+
+func main() {
+    var a, b, c, d, e, int = 1, 4, 6, 9, 7
+
+    fmt.Println(a)
+    fmt.Println(b)
+    fmt.Println(c)
+    fmt.Println(d)
+    fmt.Println(e)
+}
 ```
 
+##### output:
+```bash
+✗ go run main.go
 
+1
+4
+6
+9
+7
+```
+If the type of variable not stated you can declare aka create different types of variables on the same line.
+
+##### Example:
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main() {
+	var a, c = 7, "Billion"
+
+	g, w := 21, "Trillion"
+
+	fmt.Println(a)
+	fmt.Println(c)
+	fmt.Println(g)
+	fmt.Println(w)
+}
+```
+##### output:
+```bash
+✗ go run main.go
+
+7
+Billion
+21
+Trillion
+```
+
+### Creating (Declaring) a Variable in a block
+The declaring of variable enables readability in your code.
+
+##### Example:
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main()  {
+	var(
+		a int
+		b int = 7
+		c string = "Seven"
+	)
+
+	fmt.Println(a)
+	fmt.Println(b)
+	fmt.Println(c)
+}
+```
+
+##### output:
+```bash
+✗ go run main.go
+
+0
+7
+Seven
+```
+
+### Go Variable Naming Rules
+We have seen in our previous discussions that variable can have a short name (like a and b), so i'm going too give you the rules to name a Go variable professionally:
+
+* A variable must start with a letter or an underscore character (_) e.g
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main()  {
+	var _a string = "hello world!"
+	fmt.Println(_a) // prints hello world!
+}
+```
+* A variable cannot start with a digit e.g
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main()  {
+	var 3_W string = "hello world!"
+	fmt.Println(3_W)
+}
+```
+##### output:
+```bash
+✗ go run main.go
+# command-line-arguments
+./main.go:8:6: syntax error: unexpected literal 3_, expected name
+./main.go:8:7: '_' must separate successive digits
+./main.go:9:15: '_' must separate successive digits
+./main.go:9:16: syntax error: unexpected W in argument list; possibly missing comma or )
+```
+* A variable can only contain alpha-numeric characters and underscores (a-z, A-Z, 0-9, and _)
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main()  {
+	var M@well string = "hello world!"
+	fmt.Println(M@well)
+}
+```
+
+##### output:
+```bash
+✗ go run main.go
+# command-line-arguments
+./main.go:8:7: invalid character U+0040 '@'
+./main.go:8:13: syntax error: unexpected string at end of statement
+./main.go:9:15: invalid character U+0040 '@'
+./main.go:9:16: syntax error: unexpected well in argument list; possibly missing comma or )
+```
+* Variables are case sensitive (name, Name and NAME are three different variables) e.g
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main()  {
+	var fullName string = "hello world!"
+	fmt.Println(FullName)
+}
+```
+##### output:
+```bash
+✗ go run main.go
+# command-line-arguments
+./main.go:8:6: fullName declared and not used
+./main.go:9:14: undefined: FullName
+```
+
+* There is no limit to the length of variable.
+* A variables cannot contain space
+* The variables cannot be any Go keywords e.g
+```go
+package main
+
+import(
+	"fmt"
+)
+
+func main()  {
+	var var string = "hello world!"
+	fmt.Println(var)
+}
+```
+##### output:
+```bash
+✗ go run main.go
+# command-line-arguments
+./main.go:8:6: syntax error: unexpected var, expected name
+./main.go:9:14: syntax error: unexpected var, expected expression
+```
+
+#### Multi-Word Variable Names
+Variable names with more than one word can be difficult to read.
+
+There are several techniques you can use to make them more readable:
+
+##### Camel Case
+The first letter starts with a lowercase after the first letter the remaining words starts with a capital letter:
+
+>myVariableName = "Camel Case"
+
+##### Pascal Case
+Each word starts with a capital letter:
+
+>MyVariableName = "Pascal Case"
+
+##### Snake Case
+Each word are separated with an underscore character:
+
+>my_variable_name = "Snake Case"
+
+#### That's it for variables, in our next topic open file `constants.md` were you will learn to use constants in your code.

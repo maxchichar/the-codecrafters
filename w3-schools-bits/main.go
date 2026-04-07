@@ -5,13 +5,8 @@ import(
 )
 
 func main()  {
-	const(
-		PI = 3.14
-		NAME  = "Chibueze"
-		AGE = 21
-	)
+	var SportCars = [7]string{"Porsche 718", "Porsche 911", "Lotus emira", "Alphine A110", "BMW M3/M4", "Aston martin vantage", "BMW M2"}
 
-	fmt.Println(PI)
-	fmt.Println(NAME)
-	fmt.Println(AGE)
+	SportCars[5] = "Ferrari 296 speciale A"
+	fmt.Println(SportCars)
 }
